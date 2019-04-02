@@ -29,22 +29,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{route('index')}}"><img src="/images/logo.png" alt=""></a>
+                <a class="navbar-brand" href="/"><img src="/images/logo.png" alt=""></a>
             </div>
 
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav text-uppercase">
-                    <li><a href="{{route('index')}}">Homepage</a></li>
-                    <li><a href="about-me.html">ABOUT ME </a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="/">Homepage</a></li>
+                    <li><a href="#">ABOUT ME </a></li>
+                    <li><a href="#">CONTACT</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
-                    <li><a href="/register">Register</a></li>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="contact.html">My profile</a></li>
+                    @if(Auth::check())
+                        <li><a href="/profile">My profile</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    @else
+                        <li><a href="/register">Register</a></li>
+                        <li><a href="/login">Login</a></li>
+                    @endif
+
                 </ul>
 
             </div>

@@ -20,7 +20,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
- 
+
 
 
     protected function create(array $data)
@@ -31,6 +31,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+
 
     public function showRegistrationForm()
     {

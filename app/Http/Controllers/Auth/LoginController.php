@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -40,5 +42,27 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('pages.login');
+    }
+
+    public function login(Request $request)
+    {
+        $this->validate($request,[
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        $data = $request->only('email','password');
+
+        if (Auth::attempt($data))
+        {
+            return redirect('/');
+        }
+        return redirect()->back()->with('status','Неправильная почта или пароль');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }
