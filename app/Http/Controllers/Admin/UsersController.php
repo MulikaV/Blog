@@ -41,11 +41,7 @@ class UsersController extends Controller
     {
 		$this->validate($request,[
 			'name' => 'required',
-			'email' => [
-				'required',
-				'email',
-				Rule::unique('users')->ignore($request->id),
-			],
+			'email' => 'required|email|unique:users',
 			'password' =>'required',
 			'avatat' => 'nullable|image'
 		]);
@@ -85,7 +81,11 @@ class UsersController extends Controller
 	    $user = User::find($id);
 	    $this->validate($request,[
 		    'name' => 'required',
-		    'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($user->id),
+            ],
 		    'avatar' => 'nullable|image'
 	    ]);
 

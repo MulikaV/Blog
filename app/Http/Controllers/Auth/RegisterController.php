@@ -20,7 +20,6 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
- 
 
 
     protected function create(array $data)
@@ -49,7 +48,5 @@ class RegisterController extends Controller
         $user->generatePassword($request->get('password'));
 
         return redirect('/login');
-
-
     }
 }
