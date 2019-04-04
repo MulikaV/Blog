@@ -22,4 +22,10 @@ class CommentsController extends Controller
         $comment->toggleStatus();
         return redirect()->back();
     }
+
+    public function destroy($id)
+    {
+        Comment::find($id)->remove();
+        return redirect()->back();
+    }
 }
