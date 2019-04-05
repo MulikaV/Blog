@@ -36,6 +36,7 @@
                             <th>Имя</th>
                             <th>E-mail</th>
                             <th>Аватар</th>
+                            <th>Бан</th>
                             <th>Действия</th>
                         </tr>
                         </thead>
@@ -46,7 +47,14 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>
-                                <img src="{{$user->getAvatar()}}" alt="" class="img-responsive" width="150">
+                                <img src="{{$user->getAvatar()}}" alt="" class="img-responsive" width="150" height="150">
+                            </td>
+                            <td>
+                                @if($user->is_banned == 0)
+                                    <a href="/admin/users/toggle/{{$user->id}}" class="fa fa-lock"></a>
+                                @else
+                                    <a href="/admin/users/toggle/{{$user->id}}" class="fa fa-thumbs-o-up"></a>
+                                @endif
                             </td>
                             <td><a href="{{route('users.edit',$user->id)}}" class="fa fa-pencil"></a>
                                 {{Form::open(['route'=>['users.destroy',$user->id],'method' => 'delete'])}}

@@ -24,6 +24,7 @@ class SubscribeController extends Controller
 
     public function verify($token)
     {
+
         $subscr = Subscription::where('token',$token)->firstOrFail();
 
         $subscr->verified();

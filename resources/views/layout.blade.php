@@ -46,6 +46,9 @@
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
                     @if(Auth::check())
+                        @if(Auth::user()->is_admin == 1)
+                            <li><a href="/admin">Admin Panel</a></li>
+                        @endif
                         <li><a href="/profile">My profile</a></li>
                         <li><a href="/logout">Logout</a></li>
                     @else

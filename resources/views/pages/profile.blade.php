@@ -37,6 +37,12 @@
                                            placeholder="password">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="status" name="status"
+                                           value="{{$user->status}}" placeholder="Status">
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-md-12">

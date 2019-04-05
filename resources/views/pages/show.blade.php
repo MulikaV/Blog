@@ -46,18 +46,17 @@
                         </div>
                     </article>
                     <div class="top-comment"><!--top comment-->
-                        <img src="/images/comment.jpg" class="pull-left img-circle" alt="">
+                        <img src="{{$post->author->getAvatar()}}" class="pull-left img-circle" alt="" width="120" height="120">
                         <h4>{{$post->author->name}}</h4>
 
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
-                            invidunt ut labore et dolore magna aliquyam erat.</p>
+                        <p>{!! $post->author->status !!}</p>
                     </div><!--top comment end-->
                     <div class="row"><!--blog next previous-->
                         <div class="col-md-6">
                             @if($post->hasPrevious())
                             <div class="single-blog-box">
                                 <a href="{{route('post.show',$post->getPrevious()->slug)}}">
-                                    <img src="{{$post->getPrevious()->getImage()}}" alt="">
+                                    <img src="{{$post->getPrevious()->getImage()}}" alt="" width="200" height="200" >
                                     <div class="overlay">
                                         <div class="promo-text">
                                             <p><i class=" pull-left fa fa-angle-left"></i></p>
@@ -72,7 +71,7 @@
                             @if($post->hasNext())
                             <div class="single-blog-box">
                                 <a href="{{route('post.show', $post->getNext()->slug)}}">
-                                    <img src="{{$post->getNext()->getImage()}}" alt="">
+                                    <img src="{{$post->getNext()->getImage()}}" alt="" width="200" height="200">
                                     <div class="overlay">
                                         <div class="promo-text">
                                             <p><i class=" pull-right fa fa-angle-right"></i></p>
@@ -93,7 +92,7 @@
                             @foreach($post->related() as $item)
                             <div class="single-item">
                                 <a href="{{route('post.show',$item->slug)}}">
-                                    <img src="{{$item->getImage()}}" alt="">
+                                    <img src="{{$item->getImage()}}" alt="" width="250" height="150">
                                     <p>{{$item->title}}</p>
                                 </a>
                             </div>

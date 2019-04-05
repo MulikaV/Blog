@@ -19,21 +19,24 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
+        'status' => $faker->realText($maxNbChars = 100, $indexSize = 2),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+        'is_admin' => 0,
+        'avatar' => 'author.png'
     ];
 });
 
 $factory->define(\App\Post::class, function (Faker $faker) {
     return [
-        'title' => $faker->sentence,
-        'content' => $faker->sentence,
+        'title' => $faker->realText($maxNbChars = 15, $indexSize = 2),
+        'content' => $faker->realText($maxNbChars = 300, $indexSize = 2),
+        'description' => $faker->realText($maxNbChars = 100, $indexSize = 2),
         'image' => 'photo1.png',
-        'date' => '08/09/17',
+        'date' => $faker->date($format = 'd/m/y', $max = 'now'),
         'views' => $faker->numberBetween(0,5000),
-        'category_id' => $faker->numberBetween(5,9),
-        'user_id' => 1,
+        'category_id' => $faker->numberBetween(1,4),
+        'user_id' => $faker->numberBetween(2,9),
         'status' => 1,
         'is_featured' => 0
     ];
@@ -41,12 +44,12 @@ $factory->define(\App\Post::class, function (Faker $faker) {
 
 $factory->define(   \App\Category::class,function (Faker $faker){
 	return[
-		'title' => $faker->word
+		'title' => $faker->realText($maxNbChars = 10, $indexSize = 2)
 	];
 });
 
 $factory->define(   \App\Tag::class,function (Faker $faker){
 	return[
-		'title' => $faker->word
+		'title' =>$faker->realText($maxNbChars = 10, $indexSize = 2)
 	];
 });

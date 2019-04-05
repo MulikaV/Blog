@@ -19,6 +19,7 @@ class Subscription extends Model
     public function generateToken()
     {
         $this->token = str_random(100);
+        $this->save();
    }
 
     public function verified()

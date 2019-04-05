@@ -10,7 +10,7 @@
                             <div class="col-md-6">
                                 <article class="post post-grid">
                                     <div class="post-thumb">
-                                        <a href="{{route('post.show',$post->slug)}}"><img src="{{$post->getImage()}}" alt=""></a>
+                                        <a href="{{route('post.show',$post->slug)}}"><img src="{{$post->getImage()}}" alt="" width="200" height="250"></a>
 
                                         <a href="{{route('post.show',$post->slug)}}" class="post-thumb-overlay text-center">
                                             <div class="text-uppercase text-center">View Post</div>
@@ -30,7 +30,7 @@
                                             </p>
 
                                             <div class="social-share">
-                                                <span class="social-share-title pull-left text-capitalize">By Rubel On {{$post->getDate()}}</span>
+                                                <span class="social-share-title pull-left text-capitalize">By {{$post->author->name}} On {{$post->getDate()}}</span>
                                             </div>
                                         </div>
                                     </div>

@@ -11,8 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    const IS_ADMIN = 1;
-    const IS_USER = 0;
+
     const IS_BANNED = 1;
     const IS_ACTIVE = 0;
 
@@ -114,43 +113,23 @@ class User extends Authenticatable
 		return '/uploads/'.$this->avatar;
 	}
 
-	public function makeAdmin()
-	{
-		$this->is_admin = User::IS_ADMIN;
-		$this->save();
-	}
 
-	public function makeNormal()
-	{
-		$this->is_admin = User::IS_USER;
-		$this->save();
-	}
-
-	public function toggleAdmin($value)
-	{
-		if ($value == null)
-		{
-			return $this->makeNormal();
-		}
-
-		return $this->makeAdmin();
-	}
 
 	public function ban()
 	{
-		$this->status = User::IS_BANNED;
+		$this->is_banned = User::IS_BANNED;
 		$this->save();
 	}
 
 	public function unban()
 	{
-		$this->status = User::IS_ACTIVE;
+		$this->is_banned = User::IS_ACTIVE;
 		$this->save();
 	}
 
-	public function toggleBan($value)
+	public function toggleBan()
 	{
-		if ($value == null)
+		if ($this->is_banned == 1)
 		{
 			return $this->unban();
 		}

@@ -16,7 +16,8 @@
             <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
             @foreach($popularPost as $post)
             <div class="popular-post">
-                <a href="{{route('post.show',$post->slug)}}" class="popular-img"><img src="{{$post->getImage()}}" alt="">
+                <a href="{{route('post.show',$post->slug)}}" class="popular-img">
+                    <img src="{{$post->getImage()}}" alt="" width="250" height="250">
                     <div class="p-overlay"></div>
                 </a>
                 <div class="p-content">
@@ -33,12 +34,12 @@
                 @foreach($featuredPost as $post)
                 <div class="item">
                     <div class="feature-content">
-                        <img src="{{$post->getImage()}}" alt="">
+                        <img src="{{$post->getImage()}}" alt="" width="250" height="200">
 
                         <a href="{{route('post.show',$post->slug)}}" class="overlay-text text-center">
                             <h5 class="text-uppercase">{{$post->title}}</h5>
 
-                            <p>{{$post->description}} </p>
+                            <p>{!! $post->description !!} </p>
                         </a>
                     </div>
                 </div>
@@ -51,7 +52,7 @@
             <div class="thumb-latest-posts">
                 <div class="media">
                     <div class="media-left">
-                        <a href="#" class="popular-img"><img src="{{$post->getImage()}}" alt="">
+                        <a href="#" class="popular-img"><img src="{{$post->getImage()}}" alt="" width="250" height="200">
                             <div class="p-overlay"></div>
                         </a>
                     </div>

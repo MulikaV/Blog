@@ -49,6 +49,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware' => 'admin'], 
 	Route::resource('/subscribers', 'SubscribersController');
 	Route::get('/comments', 'CommentsController@index');
 	Route::get('/comments/toggle/{id}', 'CommentsController@toggle');
+	Route::get('/users/toggle/{id}', 'UsersController@toggle');
 	Route::delete('/comments/{id}/destroy', 'CommentsController@destroy')->name('comments.destroy');
 });
 
